@@ -1,4 +1,4 @@
-package lab.polymorphism;
+package csc207.uparacha.layout;
 
 /**
  * One line of text.

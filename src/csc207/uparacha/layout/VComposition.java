@@ -1,4 +1,4 @@
-package lab.polymorphism;
+package csc207.uparacha.layout;
 
 /**
  * The vertical composition of two text blocks.

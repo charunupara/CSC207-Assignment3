@@ -1,4 +1,4 @@
-package lab.polymorphism;
+package csc207.uparacha.layout;
 
 /**
  * Simple blocks of text for a lab on polymorphism

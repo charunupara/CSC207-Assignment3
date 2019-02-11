@@ -1,5 +1,8 @@
 package lab.polymorphism;
 
+import csc207.uparacha.layout.TBUtils;
+import csc207.uparacha.layout.TextBlock;
+
 /**
  * A text block surrounded by a box.
  *

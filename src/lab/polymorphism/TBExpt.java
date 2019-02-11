@@ -1,6 +1,9 @@
 package lab.polymorphism;
 
 import java.io.PrintWriter;
+import csc207.uparacha.layout.TBUtils;
+import csc207.uparacha.layout.TextBlock;
+import csc207.uparacha.layout.TextLine;
 
 /**
  * A series of experiments with the text block layout classes.
