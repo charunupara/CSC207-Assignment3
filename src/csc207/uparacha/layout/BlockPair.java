@@ -2,57 +2,44 @@ package csc207.uparacha.layout;
 
 import java.io.PrintWriter;
 
-public class TruncatedBlock implements TextBlock {
+public class BlockPair implements TextBlock {
   private TextBlock content;
   private int width;
   private int height;
-
+  
   /**
    * Create a new truncated block of the specified width.
    */
-  public TruncatedBlock(TextBlock tb, int width) {
+  public BlockPair(TextBlock tb) {
     this.content = tb;
-    this.width = width;
+    this.width = 2*this.content.width();
     this.height = this.content.height();
-  } // TruncatedBlock(TextBlock, int)
+  } // BlockPairk(TextBlock, int)
 
-  /**
-   * Get the ith row of the block.
-   */
   public String row(int i) throws Exception {
-    String result = "";
     if (i >= 0 && i < this.height) {
-      result = (this.content.row(i)).substring(0, (width));
-      return result;
+      String result=this.content.row(i);
+      return result+result;
     } else {
       throw new Exception("Invalid row" + i);
     }
-
-  } // row(int)
-
-  /**
-   * Determine how many rows are in the block.
-   */
+  }
   public int height() {
-    return this.content.height();
+    return this.height;
   } // height()
-
-  /**
-   * Determine how many columns are in the block.
-   */
+  
   public int width() {
     return this.width;
   } // width()
-
+  
   public static void main(String[] args) throws Exception {
     PrintWriter pen = new PrintWriter(System.out, true);
 
 
     TextBlock block = new VComposition(new TextLine("Hello"), new TextLine("Goodbye"));
-    TextBlock block2 = new TruncatedBlock(block, 3);
+    TextBlock block2 = new BlockPair(block);
     TBUtils.print(pen, block);
     TBUtils.print(pen, block2);
   }
-} // class TruncatedBlock
-
-
+  
+}
