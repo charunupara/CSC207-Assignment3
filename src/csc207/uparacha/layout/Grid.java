@@ -49,8 +49,8 @@ public class Grid implements TextBlock{
 
   public static void main(String[] args) throws Exception {
     PrintWriter pen = new PrintWriter(System.out, true);
-    Grid g = new Grid(5, 5, '*');
-    pen.println(g.row(3));
+    
+    TBUtils.print(pen,  new BoxedBlock (new Grid (7, 3, '*')));
 
   }
 }
