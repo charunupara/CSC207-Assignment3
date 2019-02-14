@@ -1,5 +1,7 @@
 package com.mcfarevee.groceries;
 
+import java.lang.String;
+
 public class BulkItem implements Item{
   private BulkFood food;
   private Unit unit;
