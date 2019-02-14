@@ -1,6 +1,11 @@
 package com.mcfarevee.groceries;
 
+
+
+
+
 public class BulkItem implements Item {
+
   private BulkFood food;
   private Unit unit;
   private int amount;
