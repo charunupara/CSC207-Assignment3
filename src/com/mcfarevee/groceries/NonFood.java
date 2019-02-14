@@ -24,7 +24,7 @@ public class NonFood implements Item {
     return this.price;
   }
 
-  public boolean equals(Object other) {
+  public boolean equals(T other) {
     if (other instanceof NonFood) {
       if ((this.name == other.name) && (this.weight == other.weight)
           && (this.price == other.price)) {

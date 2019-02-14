@@ -17,5 +17,10 @@ public class BulkFood {
   
   public String toString() {
     return this.name;
-      }
+      }// toString()
+  
+  public int getPricePerUnit() {
+    return this.pricePerUnit;
+    
+  }//getPrice()
 }
