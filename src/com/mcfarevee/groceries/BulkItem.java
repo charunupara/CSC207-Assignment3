@@ -51,6 +51,13 @@ public class BulkItem implements Item {
       return false;
   }
 
+  public void setAmount(int amount) {
+    this.amount= amount;
+  }
+
+  public void getAmount() {
+    this.amount= amount;
+  }
 
   public static void main(String[] args) {
 
