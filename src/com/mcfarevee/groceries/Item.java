@@ -13,5 +13,5 @@ public interface Item {
 
   public String toString();
 
-  public boolean equals();
+  public boolean equals(Object other);
 }

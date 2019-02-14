@@ -24,6 +24,7 @@ public class CenteredBlock implements TextBlock {
     String result = this.content.row(i);
     if (i >= 0 && i < this.height) {
       int diff = (this.width - this.content.width());
+      // If diff is negative, throw an exception
       for (int j = 0; j < diff; j++) {
         if((j%2)==0) {
         result=" "+ result;}
