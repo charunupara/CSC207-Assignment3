@@ -1,12 +1,11 @@
 package com.mcfarevee.groceries;
 
-<<<<<<< HEAD
-import java.lang.String;
 
-public class BulkItem implements Item{
-=======
+
+
+
 public class BulkItem implements Item {
->>>>>>> 1b29004d88478a30367943283bb03dd050b4182d
+
   private BulkFood food;
   private Unit unit;
   private int amount;

@@ -15,6 +15,7 @@ public class BoxedBlock implements TextBlock {
    * The stuff in the box
    */
   TextBlock contents;
+  int width;
 
   // +--------------+------------------------------------------------------
   // | Constructors |
@@ -25,6 +26,7 @@ public class BoxedBlock implements TextBlock {
    */
   public BoxedBlock(TextBlock _contents) {
     this.contents = _contents;
+    this.width=this.contents.width();
   } // BoxedBlock(String)
 
   // +---------+-----------------------------------------------------------
