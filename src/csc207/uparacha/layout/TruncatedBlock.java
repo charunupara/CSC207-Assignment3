@@ -52,6 +52,19 @@ public class TruncatedBlock implements TextBlock {
     TextBlock block2 = new TruncatedBlock(block, 3);
     TBUtils.print(pen, block);
     TBUtils.print(pen, block2);
+    
+    
+    TextLine tb1 = new TextLine("Hello");
+    TextLine tb2 = new TextLine("World");
+    TextBlock compound = new BoxedBlock (new BoxedBlock (new VComposition(tb1, tb2)));
+    pen.println("ORIGINAL");
+    TBUtils.print(pen, compound);
+    tb2.setContents("Someone");
+    pen.println("UPDATED");
+    TBUtils.print(pen, compound);
+    tb1.setContents("Nice to meet you,");
+    pen.println("RE-UPDATED");
+    TBUtils.print(pen, compound);
   }
 } // class TruncatedBlock
 

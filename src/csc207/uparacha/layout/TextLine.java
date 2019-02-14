@@ -58,4 +58,7 @@ public class TextLine implements TextBlock {
     return this.line.length();
   } // width()
 
+  public void setContents(String newContents) {
+    this.line=newContents;
+  }
 } // class TextLine
