@@ -14,27 +14,24 @@ public class CenteredBlock implements TextBlock {
     this.height = this.content.height();
 
     if (width < this.content.width()) {
-      throw new Exception("Invalid width" + width);
+      throw new Exception("Invalid width " + width);
     } else {
       this.width = width;
     }
   } // CenteredBlock(TextBlock, int)
 
-  public String row(int i) throws Exception{
-    String result="";
+  public String row(int i) throws Exception {
+    String result = "";
     if (i >= 0 && i < this.height) {
-      if(this.content.width()<=this.width) {
-        int diff=( this.width-this.content.width())/2;
-        for(int j=0; j<diff;j++) {
-          result+=" ";
-        }
-        String word=(result + this.content.row(i) + result);
-        return word;
+      int diff = (this.width - this.content.width()) / 2;
+      for (int j = 0; j < diff; j++) {
+        result+=" ";
       }
-    }else {
-      throw new Exception("Invalid row" + i);
+        String word = result + (this.content.row(i))+ result;
+        return word;
+      }else throw new Exception("Invalid row " + i);
+    
     }
-  }
 
   public int height() {
     return this.content.height();
@@ -45,14 +42,22 @@ public class CenteredBlock implements TextBlock {
     return this.width;
   } // width()
 
-  public static void main(String[] args) throws Exception {
-    PrintWriter pen = new PrintWriter(System.out, true);
-
-
-    TextBlock block = new VComposition(new TextLine("Hello"), new TextLine("Goodbye"));
-    TextBlock block2 = new CenteredBlock(block, 11);
-    TBUtils.print(pen, block);
-    TBUtils.print(pen, block2);
-
-}
+  
+    public static void main(String[] args) throws Exception { PrintWriter pen = new
+    PrintWriter(System.out, true);
+    
+    
+    TextLine tb1 = new TextLine("Hello"); TextLine tb2 = new TextLine("World"); TextBlock compound
+    = new BoxedBlock(new CenteredBlock(new BoxedBlock(new CenteredBlock(new VComposition(tb1, tb2),
+    7)), 15)); pen.println("ORIGINAL"); TBUtils.print(pen, compound); tb2.setContents("Someone");
+    pen.println("UPDATED"); TBUtils.print(pen, compound); tb1.setContents("Nice to meet you,");
+    pen.println("RE-UPDATED"); TBUtils.print(pen, compound);
+    
+    TextBlock top = new CenteredBlock(new TextLine("Hello"), 11); TextBlock bottom = new
+    CenteredBlock(new TextLine("Goodbye"), 11); TextBlock block = new BoxedBlock(new
+    VComposition(top,bottom)); TBUtils.print(pen, block);
+    
+    TextBlock block5 = new VComposition((new TextLine("Hello")), new TextLine("Goodbye"));
+    TextBlock block2 = new BoxedBlock(new CenteredBlock(block5, 11)); TBUtils.print(pen, block2); }
+   
 }
