@@ -24,15 +24,16 @@ public class NonFood implements Item {
     return this.price;
   }
 
-  public boolean equals(T other) {
-    if (other instanceof NonFood) {
-      if ((this.name == other.name) && (this.weight == other.weight)
-          && (this.price == other.price)) {
+  public boolean equals(Object other) {
+   NonFood othernf = (NonFood) other;
+      if ((this.name.equals(othernf.name)) && (this.weight.equals(othernf.weight))
+          && (this.price == othernf.price)) {
         return true;
       }
-    } else {
-      return false;
+      else {
+        return false;
+      }
+    
     }
   }
 
-}
