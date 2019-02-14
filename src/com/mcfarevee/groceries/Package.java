@@ -12,7 +12,7 @@ public class Package implements Item{
  
  
  public String toString() {
-   String answer= (this.weight.toString())+"package of "+this.name;
+   String answer= (this.weight.toString())+" package of "+this.name;
    return answer;
  }
   
@@ -20,13 +20,19 @@ public class Package implements Item{
  public Weight getWeight() {
  return this.weight;
  }
- public int getPrice();
+ public int getPrice()
  {
-   
+   return this.price;
  }
- public boolean equals();
+ public boolean equals(Package other)
  {
-   
+   if (other.name.equals(this.name) && (other.weight.equals(this.weight)) && other.price == this.price) {
+     return true;
+   }
+   else
+   {
+     return false;
+   }
  }
  
 }
