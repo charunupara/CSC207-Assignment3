@@ -30,13 +30,16 @@ public class Package implements Item {
    * public String getName() { return this.name; }
    */
   public boolean equals(Object other) {
-    Package otherp = (Package) other;
-    if (otherp.name.equals(this.name) && (otherp.weight.equals(this.weight))
-        && (otherp.price == this.price)) {
-      return true;
-    } else {
+    if (other instanceof Package) {
+      Package otherp = (Package) other;
+      if (otherp.name.equals(this.name) && (otherp.weight.equals(this.weight))
+          && (otherp.price == this.price)) {
+        return true;
+      } else {
+        return false;
+      }
+    } else
       return false;
-    }
   }
 
 

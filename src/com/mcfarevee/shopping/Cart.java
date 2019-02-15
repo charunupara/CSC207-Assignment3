@@ -89,32 +89,36 @@ public class Cart {
 
         BulkItem curBI = (BulkItem) current;
 
-        for (int j = (i + 1); j < this.cart.size(); i++) {
+        for (int j = (i + 1); j < this.cart.size(); j++) {
 
           Object other = this.cart.get(j);
 
           if (curBI.equals(other)) {
             curBI.setAmount((curBI.getAmount()) + (((BulkItem) other).getAmount()));
             this.cart.set(i, curBI);
-            Item last = this.cart.get((this.cart.size() - 1));
-            this.cart.set(j, last);
-            this.cart.trimToSize();
+            this.cart.remove(j);
+            /*
+             * Item last = this.cart.get((this.cart.size() - 1)); this.cart.set(j, last);
+             * this.cart.trimToSize();
+             */
 
           } // if equals
         }
       } else if (current instanceof Package) {
         Package curP = (Package) current;
 
-        for (int j = (i + 1); j < this.cart.size(); i++) {
+        for (int j = (i + 1); j < this.cart.size(); j++) {
 
           Object other = this.cart.get(j);
 
           if (curP.equals(other)) {
             ManyPackages newMP = new ManyPackages(curP, 2);
             this.cart.set(i, newMP);
-            Item last = this.cart.get((this.cart.size() - 1));
-            this.cart.set(j, last);
-            this.cart.trimToSize();
+            /*
+             * Item last = this.cart.get((this.cart.size() - 1)); this.cart.set(j, last);
+             * this.cart.trimToSize();
+             */
+            this.cart.remove(j);
           }
         }
       }
@@ -127,14 +131,17 @@ public class Cart {
       if (current instanceof ManyPackages) {
         ManyPackages curMP = (ManyPackages) current;
 
-        for (int j = (i + 1); j < this.cart.size(); i++) {
+        for (int j = (i + 1); j < this.cart.size(); j++) {
           Object other = this.cart.get(j);
           if ((curMP.getType()).equals(((ManyPackages) other).getType())) {
             curMP.setCount(curMP.getCount() + ((ManyPackages) other).getCount());
             this.cart.set(i, curMP);
-            Item last = this.cart.get((this.cart.size() - 1));
+            this.cart.remove(j);
+            /*if(j!=((this.cart.size())- 1)) {
+            Item last = this.cart.get((this.cart.size())- 1);
             this.cart.set(j, last);
-            this.cart.trimToSize();
+            this.cart.trimToSize();*/
+            //}
           }
         }
       }

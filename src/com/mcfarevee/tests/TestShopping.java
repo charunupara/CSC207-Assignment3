@@ -23,19 +23,30 @@ public class TestShopping {
     
     // The customer adds a bag of 1 gram of saffron to the cart
     cart.addItem(new BulkItem(saffron, Unit.GRAM, 1));
-
+    
+    cart.addItem(new BulkItem(saffron, Unit.GRAM, 1));
     // The customer adds a can opener to the cart, priced $3.489.
     cart.addItem(new NonFood("can opener", new Weight(Unit.OUNCE, 2), 349));
-
+    cart.addItem(new NonFood("can opener", new Weight(Unit.OUNCE, 2), 349));
     // The customer adds a box of oreos to the cart
     cart.addItem(new Package("oreos", new Weight(Unit.OUNCE, 12), 399));
-
+    cart.addItem(new Package("oreos", new Weight(Unit.OUNCE, 12), 399));
     // The customer adds five 6oz packages of macncheez to the cart, each 
     // priced at 77 cents.
     cart.addItem(new ManyPackages(new Package("macncheez", 
         new Weight(Unit.OUNCE, 6), 77), 5));
     
+    cart.addItem(new ManyPackages(new Package("macncheez", 
+        new Weight(Unit.OUNCE, 6), 77), 5));
     cart.printContents(pen);
+    
+    cart.merge();
+    
+    cart.printContents(pen);
+    
+    pen.println("hgfdjsghf");
+    pen.println(cart.numEntries());
+    pen.println(cart.numThings());
     
     
   }

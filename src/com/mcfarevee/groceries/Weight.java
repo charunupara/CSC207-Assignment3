@@ -22,6 +22,11 @@ public String toString() {
   String answer= (String.valueOf(this.amount))+ " " + unit.abbrev();
   return answer;
 }
+public boolean equals(Weight other) {
+  if((this.getUnit().equals(other.getUnit()))&& (this.amount==other.amount)) {
+    return true;
+  }else return false;
+}
   /*
    * public static merge() {
    * 
