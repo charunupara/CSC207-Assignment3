@@ -10,6 +10,14 @@ public Weight(Unit unit, int amount) {
   
 }
 
+public int getAmount() {
+  return this.amount;
+}
+
+public Unit getUnit() {
+  return this.unit;
+}
+
 public String toString() {
   String answer= (String.valueOf(this.amount))+ unit.abbrev();
   return answer;

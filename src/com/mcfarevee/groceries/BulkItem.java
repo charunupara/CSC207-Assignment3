@@ -47,7 +47,7 @@ public class BulkItem implements Item {
   public boolean equals(Object other) {
     if (other instanceof BulkItem) {
       BulkItem otherbi = (BulkItem) other;
-      if ((this.food == otherbi.food) && (this.unit == otherbi.unit) 
+      if ((this.food.equals(otherbi.food)) && (this.unit.equals(otherbi.unit))
           && (this.amount == otherbi.amount)) {
         return true;
       } else
@@ -56,6 +56,13 @@ public class BulkItem implements Item {
       return false;
   }
 
+  public void setAmount(int amount) {
+    this.amount= amount;
+  }
+
+  public void getAmount() {
+    this.amount= amount;
+  }
 
   public static void main(String[] args) {
 
