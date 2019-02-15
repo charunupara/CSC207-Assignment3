@@ -25,7 +25,7 @@ public class Package implements Item {
   public int getPrice() {
     return this.price;
   }
-  
+
   /*
    * public String getName() { return this.name; }
    */
@@ -38,7 +38,7 @@ public class Package implements Item {
       return false;
     }
   }
-  
+
 
 
 }

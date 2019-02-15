@@ -62,83 +62,85 @@ public class Cart {
     }
     return totalPrice;
   }
-  
+
   public Weight getWeight(Unit unit) {
-    int total=0;
+    int total = 0;
     Weight current;
     for (int i = 0; i < Cart.cart.size(); i++) {
-      current=(Cart.cart.get(i)).getWeight();
-      if(current.getUnit()==unit) {
-    total+=  current.getAmount();
+      current = (Cart.cart.get(i)).getWeight();
+      if (current.getUnit() == unit) {
+        total += current.getAmount();
       }
 
     }
     return new Weight(unit, total);
-    
+
   }
-  
+
   public void merge() {
-  /*  take first element
-    check for all of the same type
-    then if 
-    */ 
-    
-    for(int i=0;  i < Cart.cart.size();i++) {
-      Object current= Cart.cart.get(i);
-            
-      if (current instanceof BulkItem) {  
-      
+    /*
+     * take first element check for all of the same type then if
+     */
+
+    for (int i = 0; i < Cart.cart.size(); i++) {
+      Object current = Cart.cart.get(i);
+
+      if (current instanceof BulkItem) {
+
         BulkItem curBI = (BulkItem) current;
 
-        for(int j=(i+1); j< Cart.cart.size(); i++) {
-        
-          Object other= Cart.cart.get(j);
-          
-          if(curBI.equals(other)){
-        curBI.setAmount((curBI.getAmount()) +(((BulkItem) other).getAmount())); 
-        Cart.cart.set(i,curBI);
-        Item last= Cart.cart.get((Cart.cart.size()-1));
-        Cart.cart.set(j,last);
-        Cart.cart.trimToSize();
-        
-      }//if  equals
+        for (int j = (i + 1); j < Cart.cart.size(); i++) {
+
+          Object other = Cart.cart.get(j);
+
+          if (curBI.equals(other)) {
+            curBI.setAmount((curBI.getAmount()) + (((BulkItem) other).getAmount()));
+            Cart.cart.set(i, curBI);
+            Item last = Cart.cart.get((Cart.cart.size() - 1));
+            Cart.cart.set(j, last);
+            Cart.cart.trimToSize();
+
+          } // if equals
         }
-      }else if(current instanceof Package) {
+      } else if (current instanceof Package) {
         Package curP = (Package) current;
 
-        for(int j=(i+1); j< Cart.cart.size(); i++) {
-        
-          Object other= Cart.cart.get(j);
-          
-          if(curP.equals(other)){
-        ManyPackages newMP= new ManyPackages( curP, 2);
-        Cart.cart.set(i,newMP);
-        Item last= Cart.cart.get((Cart.cart.size()-1));
-        Cart.cart.set(j,last);
-        Cart.cart.trimToSize();
-      }
-        }
-      }
-      
-    }
-    
-    for(int i=0;  i < Cart.cart.size();i++) {
-      Object current= Cart.cart.get(i);
-      
-      if (current instanceof ManyPackages) {  
-        ManyPackages curMP = (ManyPackages) current;
-        
-        for(int j=(i+1); j< Cart.cart.size(); i++) {
-          Object other= Cart.cart.get(j);
-          if((curMP.getType()).equals(((ManyPackages)other).getType())) {
-            curMP.setCount(curMP.getCount()+((ManyPackages)other).getCount());
-            Cart.cart.set(i,curMP);
-            Item last= Cart.cart.get((Cart.cart.size()-1));
-            Cart.cart.set(j,last);
+        for (int j = (i + 1); j < Cart.cart.size(); i++) {
+
+          Object other = Cart.cart.get(j);
+
+          if (curP.equals(other)) {
+            ManyPackages newMP = new ManyPackages(curP, 2);
+            Cart.cart.set(i, newMP);
+            Item last = Cart.cart.get((Cart.cart.size() - 1));
+            Cart.cart.set(j, last);
             Cart.cart.trimToSize();
           }
-    }}}}
-      
+        }
+      }
+
+    }
+
+    for (int i = 0; i < Cart.cart.size(); i++) {
+      Object current = Cart.cart.get(i);
+
+      if (current instanceof ManyPackages) {
+        ManyPackages curMP = (ManyPackages) current;
+
+        for (int j = (i + 1); j < Cart.cart.size(); i++) {
+          Object other = Cart.cart.get(j);
+          if ((curMP.getType()).equals(((ManyPackages) other).getType())) {
+            curMP.setCount(curMP.getCount() + ((ManyPackages) other).getCount());
+            Cart.cart.set(i, curMP);
+            Item last = Cart.cart.get((Cart.cart.size() - 1));
+            Cart.cart.set(j, last);
+            Cart.cart.trimToSize();
+          }
+        }
+      }
+    }
+  }
+
 
 
 }// class
