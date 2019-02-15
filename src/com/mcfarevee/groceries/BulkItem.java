@@ -60,8 +60,8 @@ public class BulkItem implements Item {
     this.amount= amount;
   }
 
-  public void getAmount() {
-    this.amount= amount;
+  public int getAmount() {
+    return this.amount;
   }
 
   public static void main(String[] args) {

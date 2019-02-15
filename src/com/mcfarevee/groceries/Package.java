@@ -25,7 +25,10 @@ public class Package implements Item {
   public int getPrice() {
     return this.price;
   }
-
+  
+  /*
+   * public String getName() { return this.name; }
+   */
   public boolean equals(Object other) {
     Package otherp = (Package) other;
     if (otherp.name.equals(this.name) && (otherp.weight.equals(this.weight))
