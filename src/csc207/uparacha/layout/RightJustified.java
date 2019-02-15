@@ -47,7 +47,7 @@ public class RightJustified implements TextBlock {
    * Determine how many columns are in the block.
    */
   public int width() {
-    return this.width;
+    return Math.max(this.width, this.content.width());
   }
   
   /*
