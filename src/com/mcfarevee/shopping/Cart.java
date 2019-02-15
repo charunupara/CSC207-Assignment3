@@ -2,9 +2,8 @@ package com.mcfarevee.shopping;
 
 import java.io.PrintWriter;
 import java.util.ArrayList;
-import com.mcfarevee.groceries.Item;
-import com.mcfarevee.groceries.Weight;
 import com.mcfarevee.groceries.*;
+import com.mcfarevee.groceries.Package;
 
 public class Cart {
   private static ArrayList<Item> cart;
@@ -63,53 +62,86 @@ public class Cart {
     }
     return totalPrice;
   }
-  
+
   public Weight getWeight(Unit unit) {
-    int total=0;
+    int total = 0;
     Weight current;
     for (int i = 0; i < Cart.cart.size(); i++) {
-      current=(Cart.cart.get(i)).getWeight();
-      if(current.getUnit()==unit) {
-    total+=  current.getAmount();
+      current = (Cart.cart.get(i)).getWeight();
+      if (current.getUnit() == unit) {
+        total += current.getAmount();
       }
 
     }
     return new Weight(unit, total);
-    
+
   }
-  
+
   public void merge() {
-  /*  take first element
-    check for all of the same type
-    then if 
-    */
-    
-    
-    
-    for(int i=0;  i < Cart.cart.size();i++) {
-      Object ib= Cart.cart.get(i);
-      if (ib instanceof BulkItem) {
-        
-        for(int j=i; j< Cart.cart.size(); i++) {
-          Object current= Cart.cart.get(j);
+    /*
+     * take first element check for all of the same type then if
+     */
+
+    for (int i = 0; i < Cart.cart.size(); i++) {
+      Object current = Cart.cart.get(i);
+
+      if (current instanceof BulkItem) {
+
+        BulkItem curBI = (BulkItem) current;
+
+        for (int j = (i + 1); j < Cart.cart.size(); i++) {
+
+          Object other = Cart.cart.get(j);
+
+          if (curBI.equals(other)) {
+            curBI.setAmount((curBI.getAmount()) + (((BulkItem) other).getAmount()));
+            Cart.cart.set(i, curBI);
+            Item last = Cart.cart.get((Cart.cart.size() - 1));
+            Cart.cart.set(j, last);
+            Cart.cart.trimToSize();
+
+          } // if equals
         }
-         if(ib.equals(current)){
-        ((BulkItem) ib).setAmount(ib.amount+(current.getA)); 
-       }
-       }
-      
-      if (ib instanceof BulkItem) {
-        for (int j=0; )
-      }else if(ib instanceof Package) {
-        
-      } 
-        
-        if(ib instanceof ManyPackages) {
-        
+      } else if (current instanceof Package) {
+        Package curP = (Package) current;
+
+        for (int j = (i + 1); j < Cart.cart.size(); i++) {
+
+          Object other = Cart.cart.get(j);
+
+          if (curP.equals(other)) {
+            ManyPackages newMP = new ManyPackages(curP, 2);
+            Cart.cart.set(i, newMP);
+            Item last = Cart.cart.get((Cart.cart.size() - 1));
+            Cart.cart.set(j, last);
+            Cart.cart.trimToSize();
+          }
+        }
       }
-      
-    }//outer for
-    }//merge()
+
+    }
+
+    for (int i = 0; i < Cart.cart.size(); i++) {
+      Object current = Cart.cart.get(i);
+
+      if (current instanceof ManyPackages) {
+        ManyPackages curMP = (ManyPackages) current;
+
+        for (int j = (i + 1); j < Cart.cart.size(); i++) {
+          Object other = Cart.cart.get(j);
+          if ((curMP.getType()).equals(((ManyPackages) other).getType())) {
+            curMP.setCount(curMP.getCount() + ((ManyPackages) other).getCount());
+            Cart.cart.set(i, curMP);
+            Item last = Cart.cart.get((Cart.cart.size() - 1));
+            Cart.cart.set(j, last);
+            Cart.cart.trimToSize();
+          }
+        }
+      }
+    }
+  }
+
+
 
 }// class
 

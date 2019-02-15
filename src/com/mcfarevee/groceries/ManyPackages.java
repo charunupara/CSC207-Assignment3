@@ -21,8 +21,14 @@ public class ManyPackages implements Item {
     return newWeight;
 
   }
+  public Package getType() {
+    return this.type;
+  }
   public int getCount() {
     return this.count;
+  }
+  public void setCount(int more) {
+    this.count=more;
   }
 
   public int getPrice() {
