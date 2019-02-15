@@ -50,10 +50,12 @@ public class RightJustified implements TextBlock {
     return this.width;
   }
   
-  public static void main(String[] args) throws Exception { 
-    PrintWriter pen = new       PrintWriter(System.out, true);
-
-    
-
-  }
+  /*
+   * public static void main(String[] args) throws Exception { PrintWriter pen = new
+   * PrintWriter(System.out, true);
+   * 
+   * 
+   * 
+   * }
+   */
 }
