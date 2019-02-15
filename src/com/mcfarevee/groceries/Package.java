@@ -13,7 +13,7 @@ public class Package implements Item {
 
 
   public String toString() {
-    String answer = (this.weight.toString()) + " package of " + this.name;
+    String answer = (this.weight.toString())  + " package of " + this.name;
     return answer;
   }
 

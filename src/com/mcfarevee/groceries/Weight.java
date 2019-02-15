@@ -19,7 +19,7 @@ public Unit getUnit() {
 }
 
 public String toString() {
-  String answer= (String.valueOf(this.amount))+ unit.abbrev();
+  String answer= (String.valueOf(this.amount))+ " " + unit.abbrev();
   return answer;
 }
   /*

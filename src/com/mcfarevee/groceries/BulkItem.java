@@ -30,7 +30,7 @@ public class BulkItem implements Item {
 
   public String toString() {
     String answer =
-        String.valueOf(this.amount) + this.unit.toString() + " of " + this.food.toString();
+        String.valueOf(this.amount) + " " + this.unit.toString() + " of " + this.food.toString();
     return answer;
   }
 
