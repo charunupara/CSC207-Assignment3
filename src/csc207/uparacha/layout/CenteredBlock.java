@@ -26,13 +26,16 @@ public class CenteredBlock implements TextBlock {
      * if (this.width < this.content.width()) { //throw new Exception("Invalid width " + width);
      * this.width=this.content.width();
      */
-    
-    
-    String result = this.content.row(i);
-    
+
+  
+  String result = this.content.row(i);
+ 
+    int diff = this.width - this.content.width();
+ 
     if (i >= 0 && i < this.height) {
-      int diff = (this.width - this.content.width());
-         for (int j = 0; j>= 0 && j < diff; j++) {
+      //if(this.width>= this.content.width()) {
+        
+         for (int j = 1; j <= diff; j++) {
           if ((j % 2) == 0) {
             result = " " + result;
           }//if 
@@ -40,10 +43,13 @@ public class CenteredBlock implements TextBlock {
             result = result + " ";
           }//else
          }//for
-      return result;
-    } else
-      throw new Exception("Invalid row " + i);
-
+         return result;
+     // }//if 
+      /*else {
+        this.width=this.content.width();   
+        return result;*/
+      }
+    else throw new Exception("Invalid row number");
   }
 
   public int height() {
@@ -52,7 +58,7 @@ public class CenteredBlock implements TextBlock {
 
 
   public int width() {
-    return this.width;
+    return Math.max(this.content.width(), this.width);
   } // width()
 
   
@@ -78,7 +84,10 @@ public class CenteredBlock implements TextBlock {
     pen.println("ORIGINAL");
     pen.println(tb1.width());
     pen.println(tb2.width());
-    
+    pen.println(a.width());
+    pen.println(b.width());
+    pen.println(c.width());
+    pen.println(d.width());
     pen.println(compound.width());
     TBUtils.print(pen, compound);
     pen.println(compound.width());
@@ -86,20 +95,27 @@ public class CenteredBlock implements TextBlock {
     tb2.setContents("Someone");
     pen.println("djashdjk");
     
+    pen.println(tb1.width());
+    pen.println(tb2.width());
     pen.println(a.width());
-    
+    pen.println(b.width());
+    pen.println(c.width());
+    pen.println(d.width());
+    pen.println(compound.width());
   
     
     pen.println("UPDATED");
-    pen.println(tb1.width());
-    pen.println(tb2.width());
-    pen.println(compound.width());
-    TBUtils.print(pen, compound);
+    
     tb1.setContents("Nice to meetu,");
-    pen.println(b.width());
-    pen.println(a.width());
     pen.println(tb1.width());
     pen.println(tb2.width());
+    pen.println(a.width());
+    pen.println(b.width());
+    pen.println(c.width());
+    pen.println(d.width());
+    pen.println(compound.width());
+    
+  
    // pen.println(compound.width());
     pen.println("RE-UPDATED");
     TBUtils.print(pen, compound);
